@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public float secondSpawnStep;
 
     private List<GameObject> platforms;
-    private float PlatformSpawnHeight = -1;
+    private float PlatformSpawnHeight = -3;
 
 	void Start () {
         platforms = new List<GameObject>();
