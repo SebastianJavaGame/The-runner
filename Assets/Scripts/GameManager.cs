@@ -5,13 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public GameObject prefab;
     public Transform camTransform;
-    public float secondSpawnStep = 1.5f;
+    public float secondSpawnStep;
 
     private List<GameObject> platforms;
+    private float PlatformSpawnHeight = -1;
 
 	void Start () {
         platforms = new List<GameObject>();
-        InvokeRepeating("AddStep", 0, secondSpawnStep);
+        InvokeRepeating("AddStep", secondSpawnStep, secondSpawnStep);
 	}
 	
 	void Update () {
@@ -30,8 +31,8 @@ public class GameManager : MonoBehaviour {
 
     void AddStep()
     {
-        GameObject step = Instantiate(prefab, new Vector3(camTransform.position.x, camTransform.position.y -4, 0), camTransform.rotation);
+        GameObject step = Instantiate(prefab, new Vector3(camTransform.position.x +15, PlatformSpawnHeight, 0), camTransform.rotation);
         platforms.Add(step);
-        Debug.Log("created");
+        PlatformSpawnHeight += 2;
     }
 }
