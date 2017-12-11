@@ -4,53 +4,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
-    public GameObject prefab;
+public class GameManager : MonoBehaviour
+{
     public Transform camTransform;
-    public float secondSpawnStep;
     public Text textPoints;
 
+    private GameObject prefab;
     private static List<GameObject> platforms;
-    private float PlatformSpawnHeight = -3;
+    private int score;
 
-	void Start () {
+
+    void Start()
+    {
+        score = 0;
         platforms = new List<GameObject>();
-        InvokeRepeating("AddStep", secondSpawnStep, secondSpawnStep);
-	}
-	
-	void Update () {
-        if(platforms.Count != 0)
+        InvokeRepeating("ChooseLevel", 1, 0.5f);
+    }
+
+    void Update()
+    {
+        if (score > 20)
+            BaseLevel.ActualLevel = 1;
+
+        if (platforms.Count != 0)
         {
-            foreach(var platform in platforms)
+            foreach (var platform in platforms)
             {
                 if (platform.transform.position.x < camTransform.position.x - 12 || platform.transform.position.y < camTransform.position.y - 8)
                 {
                     Destroy(platform);
-                    platforms.Remove(platform);
+                    platforms.RemoveAt(0);
                 }
             }
         }
-
-        UpdatePoints();
-	}
-
-    private void UpdatePoints()
-    {
-        textPoints.text = "Score: " + (int)Time.time;
     }
 
-    void AddStep()
+    void ChooseLevel()
     {
-        GameObject step = Instantiate(prefab, new Vector3(camTransform.position.x +15, PlatformSpawnHeight, 0), camTransform.rotation);
-        platforms.Add(step);
-        PlatformSpawnHeight += 2;
+        if(platforms.Count == 0)
+        {
+            prefab = BaseLevel.Steps[BaseLevel.ActualLevel].Prefab;
+            GameObject step = Instantiate(prefab, new Vector3(20f, -3f, 0f), camTransform.rotation);
+            platforms.Add(step);
+        }
+
+        if (platforms.Count < 6)
+        {
+            prefab = BaseLevel.Steps[BaseLevel.ActualLevel].Prefab;
+            GameObject step = Instantiate(prefab, new Vector3(platforms[platforms.Count -1].transform.position.x + BaseLevel.Steps[BaseLevel.ActualLevel].SpaceWidth,
+                                                            platforms[platforms.Count - 1].transform.position.y + BaseLevel.Steps[BaseLevel.ActualLevel].SpaceHeight, 0), camTransform.rotation);
+            platforms.Add(step);
+        }
+
+        score += BaseLevel.Steps[BaseLevel.ActualLevel].ScoreAdd;
+        textPoints.text = "Score: " + score;
     }
 
-    public static List<Transform> getPlatforms()
+    public static List<Transform> GetPlatforms()
     {
         List<Transform> list = new List<Transform>();
-        
-        foreach(var element in platforms)
+
+        foreach (var element in platforms)
         {
             list.Add(element.gameObject.transform);
         }

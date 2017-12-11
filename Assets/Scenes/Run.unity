@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 1067352505}
   - component: {fileID: 1067352506}
   - component: {fileID: 1067352507}
+  - component: {fileID: 1067352508}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -616,9 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2418a551fd8fb9542a0ebd19a8636734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1601726520828762, guid: d8b80071b117efb478be59214ebef923, type: 2}
   camTransform: {fileID: 132714206}
-  secondSpawnStep: 1.24
   textPoints: {fileID: 2003242837}
 --- !u!114 &1067352507
 MonoBehaviour:
@@ -631,6 +630,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734bbde82ac86444bb91ad558d4362cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1067352508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1067352504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2badf0a10842a4f9c1f88f84e5a9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: []
+  height: []
+  spaceWidth: []
+  spaceHeight: []
+  scoreAdd: 
+  playerSpeed: []
+  prefab: {fileID: 1601726520828762, guid: d8b80071b117efb478be59214ebef923, type: 2}
 --- !u!1001 &1185603030
 Prefab:
   m_ObjectHideFlags: 0
@@ -1072,7 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55723ee91d736f04b92f74e987d5e61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedFoward: 5
+  speedFoward: 8
   hightJump: 11
 --- !u!50 &1601058255
 Rigidbody2D:

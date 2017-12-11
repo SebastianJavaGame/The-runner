@@ -15,16 +15,11 @@ public class FallowCamera : MonoBehaviour {
         platformsPosition = new List<Transform>();
     }
 
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate()
     {
-        platformsPosition = GameManager.getPlatforms();
+        platformsPosition = GameManager.GetPlatforms();
 
-        if (platformsPosition.Count < 4)
+        if (transformPlayer.position.x < 18)
         {
             destination = transform.position;
         }
