@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private static List<GameObject> platforms;
     private int score;
 
+    public static float LastPlatform { get; set; }
 
     void Start()
     {
@@ -24,7 +25,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (score > 20)
-            BaseLevel.ActualLevel = 1;
+        {
+            score = 0;
+            BaseLevel.UpgradeLevel();
+        }
 
         if (platforms.Count != 0)
         {
@@ -41,7 +45,18 @@ public class GameManager : MonoBehaviour
 
     void ChooseLevel()
     {
-        if(platforms.Count == 0)
+        if (BaseLevel.ChangeLevel)
+        {
+            if (LastPlatform < camTransform.transform.position.x)
+                BaseLevel.ChangeLevel = false;
+        }
+        else
+        {
+            if (platforms.Count > 0)
+                LastPlatform = platforms[platforms.Count - 1].transform.position.x;
+        }
+
+        if (platforms.Count == 0)
         {
             prefab = BaseLevel.Steps[BaseLevel.ActualLevel].Prefab;
             GameObject step = Instantiate(prefab, new Vector3(20f, -3f, 0f), camTransform.rotation);
@@ -51,7 +66,7 @@ public class GameManager : MonoBehaviour
         if (platforms.Count < 6)
         {
             prefab = BaseLevel.Steps[BaseLevel.ActualLevel].Prefab;
-            GameObject step = Instantiate(prefab, new Vector3(platforms[platforms.Count -1].transform.position.x + BaseLevel.Steps[BaseLevel.ActualLevel].SpaceWidth,
+            GameObject step = Instantiate(prefab, new Vector3(platforms[platforms.Count - 1].transform.position.x + BaseLevel.Steps[BaseLevel.ActualLevel].SpaceWidth,
                                                             platforms[platforms.Count - 1].transform.position.y + BaseLevel.Steps[BaseLevel.ActualLevel].SpaceHeight, 0), camTransform.rotation);
             platforms.Add(step);
         }
