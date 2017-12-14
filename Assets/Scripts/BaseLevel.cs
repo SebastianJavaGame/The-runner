@@ -18,6 +18,7 @@ public class BaseLevel : MonoBehaviour {
     public static Platform[] Steps { get; set; }
     public static int ActualLevel { get; set; }
     public static bool ChangeLevel { get; set; }
+    public static int StepRequired { get; set; }
 
     void Start()
     {
@@ -25,8 +26,8 @@ public class BaseLevel : MonoBehaviour {
         ActualLevel = 0;
 
         Steps = new Platform[10];
-        Steps[0] = new Platform(5.5f, 2f, 1, 5f, prefab);
-        Steps[1] = new Platform(8f, 2.2f, 2, 8f, prefab);
+        Steps[0] = new Platform(5.5f, 2f, 1, 5f, prefab, 15);
+        Steps[1] = new Platform(8f, 2.2f, 2, 8f, prefab, 25);
     }
 
     public static void UpgradeLevel()
@@ -34,5 +35,6 @@ public class BaseLevel : MonoBehaviour {
         Platform.PlayerSpeedTemporary = Steps[ActualLevel].PlayerSpeed;
         ActualLevel++;
         ChangeLevel = true;
+        StepRequired = 0;
     }
 }
