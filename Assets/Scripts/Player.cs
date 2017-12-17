@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public float speedFoward;
     public float hightJump;
+
+    private Animator anim;
 	
 	void Start () {
-		
+        anim = GetComponent<Animator>();
 	}
 	
 	void Update () {
@@ -26,5 +28,8 @@ public class Player : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, hightJump);
             GroundCollision.IsGround = false;
         }
-	}
+
+        anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+        anim.SetBool("Grounded", GroundCollision.IsGround);
+    }
 }

@@ -62,9 +62,7 @@ public class GameManager : MonoBehaviour
         }
 
         score += BaseLevel.Steps[BaseLevel.ActualLevel].ScoreAdd;
-        textPoints.text = "Score: " + score + " step: " + BaseLevel.StepRequired;
-        Debug.Log(LastPlatform + " " + camTransform.position.x);
-        Debug.Log(platforms.Count);
+        textPoints.text = "Score: " + score + " step: " + (BaseLevel.Steps[BaseLevel.ActualLevel].StepCount - BaseLevel.StepRequired);
 
         if (BaseLevel.ChangeLevel)
         {
