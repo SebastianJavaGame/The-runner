@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         platforms = new List<GameObject>();
-        randomSpawnX = UnityEngine.Random.Range(3, 10);
+        randomSpawnX = UnityEngine.Random.Range(10, 20);
         score = 0;
-        //platforms.Add(Instantiate(prefabSimpleObstacle, new Vector3(randomSpawnX, 1.3f, 0), camTransform.rotation));
+        platforms.Add(Instantiate(prefabSimpleObstacle, new Vector3(randomSpawnX, 1.3f, 0), camTransform.rotation));
     }
 
     void Update()

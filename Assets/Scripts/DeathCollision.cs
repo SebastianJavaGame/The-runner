@@ -6,8 +6,12 @@ public class DeathCollision : MonoBehaviour
 {
     public static bool IsDeath { get; set; }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        IsDeath = true;
+        if (coll.gameObject.tag == "Obstacle")
+            IsDeath = true;
+        else
+            Debug.Log("a");
+
     }
 }

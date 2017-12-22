@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
             GroundCollision.IsGround = false;
         }
 
-        CheckPlayerDied();
     }
 
     void FixedUpdate()
@@ -41,6 +40,8 @@ public class Player : MonoBehaviour
 
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
         anim.SetBool("Grounded", GroundCollision.IsGround);
+
+        CheckPlayerDied();
     }
 
     void CheckPlayerDied()
@@ -48,10 +49,17 @@ public class Player : MonoBehaviour
         if (DeathCollision.IsDeath)
         {
             anim.SetBool("Death", DeathCollision.IsDeath);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3);
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
-            GetComponent<BoxCollider2D>().enabled = false;
-            DeathCollision.IsDeath = false;
+
+            if (transform.position.y < 2)
+            {
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3);
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(2, -3);
+            }
+
         }
     }
 }

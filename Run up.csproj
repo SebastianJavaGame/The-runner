@@ -81,7 +81,6 @@
     <Compile Include="Assets\Scripts\BaseLevel.cs" />
     <Compile Include="Assets\Scripts\ButtonsControl.cs" />
     <Compile Include="Assets\Scripts\DeathCollision.cs" />
-    <Compile Include="Assets\Scripts\DestroyStartPlatforms.cs" />
     <Compile Include="Assets\Scripts\FallowCamera.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GroundCollision.cs" />
