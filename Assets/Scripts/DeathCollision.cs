@@ -10,8 +10,5 @@ public class DeathCollision : MonoBehaviour
     {
         if (coll.gameObject.tag == "Obstacle")
             IsDeath = true;
-        else
-            Debug.Log("a");
-
     }
 }

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public Transform camTransform;
     public Text textPoints;
-    public GameObject prefabSimpleObstacle;
+    public GameObject[] prefabGroundObstacles;
     public Transform groundOne;
     public Transform groundTwo;
 
@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         platforms = new List<GameObject>();
-        randomSpawnX = UnityEngine.Random.Range(10, 20);
+        randomSpawnX = UnityEngine.Random.Range(8, 20);
         score = 0;
-        platforms.Add(Instantiate(prefabSimpleObstacle, new Vector3(randomSpawnX, 1.3f, 0), camTransform.rotation));
+        platforms.Add(Instantiate(prefabGroundObstacles[0], new Vector3(randomSpawnX, 1.3f, 0), camTransform.rotation));
     }
 
     void Update()
@@ -57,15 +57,15 @@ public class GameManager : MonoBehaviour
             Debug.Log(platforms.Count + " obstacles count");
         }
 
-        //SpawnSimpleObstacle();
+        SpawnGroundObstacles();
     }
 
-    void SpawnSimpleObstacle()
+    void SpawnGroundObstacles()
     {
-        if(camTransform.position.x > prefabSimpleObstacle.transform.position.x && platforms.Count < 2)
+        if(platforms.Count > 0 && camTransform.position.x > platforms[0].transform.position.x && platforms.Count < 2)
         {
-            randomSpawnX = UnityEngine.Random.Range(6, 15);
-            platforms.Add(Instantiate(prefabSimpleObstacle, new Vector3(prefabSimpleObstacle.transform.position.x + randomSpawnX, 1.4f, 0), camTransform.rotation));
+            randomSpawnX = UnityEngine.Random.Range(15, 30);
+            platforms.Add(Instantiate(prefabGroundObstacles[UnityEngine.Random.Range(0, prefabGroundObstacles.Length)], new Vector3(platforms[platforms.Count -1].transform.position.x + randomSpawnX, 1.3f, 0), camTransform.rotation));
         }
     }
 }

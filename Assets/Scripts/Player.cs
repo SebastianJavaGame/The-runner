@@ -24,19 +24,16 @@ public class Player : MonoBehaviour
             GroundCollision.IsGround = false;
         }
 
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speedFoward, GetComponent<Rigidbody2D>().velocity.y);
     }
 
     void FixedUpdate()
     {
-        if (BaseLevel.ChangeLevel)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(Platform.PlayerSpeedTemporary, GetComponent<Rigidbody2D>().velocity.y);
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(BaseLevel.Steps[BaseLevel.ActualLevel].PlayerSpeed, GetComponent<Rigidbody2D>().velocity.y);
-            //GetComponent<Rigidbody2D>().velocity = new Vector2(speedFoward, GetComponent<Rigidbody2D>().velocity.y);
-        }
+        if (playerPosX == transform.position.x && DeathCollision.IsDeath == false)
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.01f);
+        playerPosX = transform.position.x;
+
+        
 
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
         anim.SetBool("Grounded", GroundCollision.IsGround);
