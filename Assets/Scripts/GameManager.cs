@@ -8,22 +8,24 @@ public class GameManager : MonoBehaviour
 {
     public Transform camTransform;
     public Text textPoints;
-    public GameObject[] prefabGroundObstacles;
     public Transform groundOne;
     public Transform groundTwo;
+    public GameObject[] prefabsObstacles;
 
     private static List<GameObject> platforms;
-    private float randomSpawnX;
     private int score;
+    private List<Obstacle> obstacles;
 
     public static float LastPlatform { get; set; }
 
     void Start()
     {
+        obstacles = new List<Obstacle>();
         platforms = new List<GameObject>();
-        randomSpawnX = UnityEngine.Random.Range(8, 20);
         score = 0;
-        platforms.Add(Instantiate(prefabGroundObstacles[0], new Vector3(randomSpawnX, 1.3f, 0), camTransform.rotation));
+        InitializeObstacle();
+        int firstObstacle = UnityEngine.Random.Range(0, obstacles.Count);
+        platforms.Add(Instantiate(obstacles[firstObstacle].Prefab, new Vector3(UnityEngine.Random.Range(8, 20), obstacles[firstObstacle].PosY, 0), camTransform.rotation));
     }
 
     void Update()
@@ -63,11 +65,18 @@ public class GameManager : MonoBehaviour
 
     void SpawnGroundObstacles()
     {
-        if (platforms[0] != null)
+        if (platforms.Count > 0 && platforms[0] != null)
             if (platforms.Count > 0 && camTransform.position.x > platforms[0].transform.position.x && platforms.Count < 2)
             {
-                randomSpawnX = UnityEngine.Random.Range(15, 30);
-                platforms.Add(Instantiate(prefabGroundObstacles[UnityEngine.Random.Range(0, prefabGroundObstacles.Length)], new Vector3(platforms[platforms.Count - 1].transform.position.x + randomSpawnX, 1.3f, 0), camTransform.rotation));
+                int randomSpawnX = UnityEngine.Random.Range(15, 30);
+                int randomNumberObstacle = UnityEngine.Random.Range(0, obstacles.Count);
+                platforms.Add(Instantiate(obstacles[randomNumberObstacle].Prefab, new Vector3(platforms[platforms.Count - 1].transform.position.x + randomSpawnX, obstacles[randomNumberObstacle].PosY, 0), camTransform.rotation));
             }
+    }
+
+    private void InitializeObstacle()
+    {
+        obstacles.Add(new Obstacle(1.2f, prefabsObstacles[0]));
+        obstacles.Add(new Obstacle(1.3f, prefabsObstacles[1]));
     }
 }

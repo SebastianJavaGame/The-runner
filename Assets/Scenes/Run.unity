@@ -730,11 +730,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camTransform: {fileID: 132714206}
   textPoints: {fileID: 2003242837}
-  prefabGroundObstacles:
-  - {fileID: 1995898953160408, guid: c05ea77b4b2777242926a42f35b61149, type: 2}
-  - {fileID: 1849773871879886, guid: 7e2eee395456535428f463990904f2ac, type: 2}
   groundOne: {fileID: 1777498182}
   groundTwo: {fileID: 1277355320}
+  prefabsObstacles:
+  - {fileID: 1995898953160408, guid: c05ea77b4b2777242926a42f35b61149, type: 2}
+  - {fileID: 1849773871879886, guid: 7e2eee395456535428f463990904f2ac, type: 2}
 --- !u!114 &1067352507
 MonoBehaviour:
   m_ObjectHideFlags: 0
