@@ -8,13 +8,6 @@ public class Player : MonoBehaviour
     public float hightJump;
 
     private float playerPosX;
-    private Animator anim;
-
-    void Start()
-    {
-        DeathCollision.IsDeath = false;
-        anim = GetComponent<Animator>();
-    }
 
     void Update()
     {
@@ -29,34 +22,11 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (playerPosX == transform.position.x && DeathCollision.IsDeath == false)
+        if (playerPosX == transform.position.x && GetComponent<Animator>().GetBool("Death") == false)
             transform.position = new Vector2(transform.position.x, transform.position.y + 0.01f);
         playerPosX = transform.position.x;
 
-        
-
-        anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
-        anim.SetBool("Grounded", GroundCollision.IsGround);
-
-        CheckPlayerDied();
-    }
-
-    void CheckPlayerDied()
-    {
-        if (DeathCollision.IsDeath)
-        {
-            anim.SetBool("Death", DeathCollision.IsDeath);
-
-            if (transform.position.y < 2)
-            {
-                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3);
-            }
-            else
-            {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(2, -3);
-            }
-
-        }
+        GetComponent<Animator>().SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+        GetComponent<Animator>().SetBool("Grounded", GroundCollision.IsGround);
     }
 }

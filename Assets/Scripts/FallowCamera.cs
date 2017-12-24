@@ -48,10 +48,5 @@ public class FallowCamera : MonoBehaviour
 
         transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, interpolation);
         transform.position = new Vector3(transformPlayer.position.x + 4, 5, -10);
-
-        if (transform.position.y > transformPlayer.position.y + 5)
-        {
-            DeathCollision.IsDeath = true;
-        }
     }
 }

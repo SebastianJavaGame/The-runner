@@ -30,14 +30,14 @@ public class GameManager : MonoBehaviour
     {
         if (groundOne.position.x < groundTwo.position.x)
         {
-            if ((int)groundTwo.position.x == (int)camTransform.position.x -8)
+            if ((int)groundTwo.position.x == (int)camTransform.position.x - 8)
             {
                 groundOne.position = new Vector2(groundTwo.position.x + 18f, groundOne.position.y);
             }
         }
         else
         {
-            if ((int)groundOne.position.x == (int)camTransform.position.x -8)
+            if ((int)groundOne.position.x == (int)camTransform.position.x - 8)
             {
                 groundTwo.position = new Vector2(groundOne.position.x + 18, groundTwo.position.y);
             }
@@ -47,12 +47,13 @@ public class GameManager : MonoBehaviour
         {
             foreach (var platform in platforms)
             {
-                if (platform.transform.position.x < camTransform.position.x - 12 || platform.transform.position.y < camTransform.position.y - 8)
-                {
-                    Destroy(platform);
-                    platforms.Remove(platform);
+                if (platform != null)
+                    if (platform.transform.position.x < camTransform.position.x - 12 || platform.transform.position.y < camTransform.position.y - 8)
+                    {
+                        Destroy(platform);
+                        platforms.Remove(platform);
 
-                }
+                    }
             }
             Debug.Log(platforms.Count + " obstacles count");
         }
@@ -62,10 +63,11 @@ public class GameManager : MonoBehaviour
 
     void SpawnGroundObstacles()
     {
-        if(platforms.Count > 0 && camTransform.position.x > platforms[0].transform.position.x && platforms.Count < 2)
-        {
-            randomSpawnX = UnityEngine.Random.Range(15, 30);
-            platforms.Add(Instantiate(prefabGroundObstacles[UnityEngine.Random.Range(0, prefabGroundObstacles.Length)], new Vector3(platforms[platforms.Count -1].transform.position.x + randomSpawnX, 1.3f, 0), camTransform.rotation));
-        }
+        if (platforms[0] != null)
+            if (platforms.Count > 0 && camTransform.position.x > platforms[0].transform.position.x && platforms.Count < 2)
+            {
+                randomSpawnX = UnityEngine.Random.Range(15, 30);
+                platforms.Add(Instantiate(prefabGroundObstacles[UnityEngine.Random.Range(0, prefabGroundObstacles.Length)], new Vector3(platforms[platforms.Count - 1].transform.position.x + randomSpawnX, 1.3f, 0), camTransform.rotation));
+            }
     }
 }
