@@ -10,9 +10,20 @@ public class FallowCamera : MonoBehaviour
 
     public float interpolation;
 
+    public static float disappearScreen;
+
     private Vector3 velocity = Vector3.zero;
     private List<Transform> platformsPosition;
     private Vector3 destination;
+
+    void Awake()
+    {
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        disappearScreen = height * cam.aspect;
+        disappearScreen /= 2;
+        disappearScreen += 2;
+    }
 
     void Start()
     {

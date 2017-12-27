@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeathCollision : MonoBehaviour
 {
+    public Text textScore;
+    private int score = 0;
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Obstacle")
@@ -20,6 +24,13 @@ public class DeathCollision : MonoBehaviour
             coll.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Destroy(coll.gameObject, 0.8f);
             Died();
+        }
+
+        if(coll.gameObject.tag == "Coins")
+        {
+            score += 2;
+            textScore.text = "Score: " + score;
+            Destroy(coll.gameObject);
         }
     }
 

@@ -7,22 +7,22 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Transform camTransform;
-    public Text textPoints;
     public Transform groundOne;
     public Transform groundTwo;
+    public GameObject coin;
     public GameObject[] prefabsObstacles;
 
     private static List<GameObject> platforms;
-    private int score;
     private List<Obstacle> obstacles;
+    private List<GameObject> coins;
 
     public static float LastPlatform { get; set; }
 
     void Start()
     {
         obstacles = new List<Obstacle>();
+        coins = new List<GameObject>();
         platforms = new List<GameObject>();
-        score = 0;
         InitializeObstacle();
         int firstObstacle = UnityEngine.Random.Range(0, obstacles.Count);
         platforms.Add(Instantiate(obstacles[firstObstacle].Prefab, new Vector3(UnityEngine.Random.Range(8, 20), obstacles[firstObstacle].PosY, 0), camTransform.rotation));
@@ -50,14 +50,28 @@ public class GameManager : MonoBehaviour
             foreach (var platform in platforms)
             {
                 if (platform != null)
-                    if (platform.transform.position.x < camTransform.position.x - 12 || platform.transform.position.y < camTransform.position.y - 8)
+                    if (platform.transform.position.x < camTransform.position.x - FallowCamera.disappearScreen)
                     {
                         Destroy(platform);
                         platforms.Remove(platform);
-
                     }
             }
             Debug.Log(platforms.Count + " obstacles count");
+        }
+
+        if(coins.Count != 0)
+        {
+            foreach(var coin in coins)
+            {
+                if(coin != null)
+                {
+                    if(coin.transform.position.x < camTransform.position.x - FallowCamera.disappearScreen)
+                    {
+                        Destroy(coin);
+                        coins.Remove(coin);
+                    }
+                }
+            }
         }
 
         SpawnGroundObstacles();
@@ -66,11 +80,19 @@ public class GameManager : MonoBehaviour
     void SpawnGroundObstacles()
     {
         if (platforms.Count > 0 && platforms[0] != null)
-            if (platforms.Count > 0 && camTransform.position.x > platforms[0].transform.position.x && platforms.Count < 2)
+            if (platforms.Count < 2)
             {
+                float firstObstacle = platforms[platforms.Count - 1].transform.position.x;
                 int randomSpawnX = UnityEngine.Random.Range(15, 30);
                 int randomNumberObstacle = UnityEngine.Random.Range(0, obstacles.Count);
                 platforms.Add(Instantiate(obstacles[randomNumberObstacle].Prefab, new Vector3(platforms[platforms.Count - 1].transform.position.x + randomSpawnX, obstacles[randomNumberObstacle].PosY, 0), camTransform.rotation));
+                float secondObstacle = platforms[platforms.Count - 1].transform.position.x;
+                float spaceCoins = (secondObstacle - firstObstacle) / 3;
+
+                for(int i = 0; i < 3; i++)
+                {
+                    coins.Add(Instantiate(coin, new Vector3((firstObstacle + (i+1) * spaceCoins) - spaceCoins /2, 1.5f, 0), camTransform.rotation));
+                }
             }
     }
 
