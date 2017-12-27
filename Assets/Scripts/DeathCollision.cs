@@ -18,7 +18,7 @@ public class DeathCollision : MonoBehaviour
     {
         if (coll.gameObject.tag == "ObstacleAnimation")
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 15, ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 20, ForceMode2D.Impulse);
             coll.gameObject.transform.position = new Vector2(coll.transform.position.x, coll.transform.position.y + 1.1f);
             coll.gameObject.GetComponent<Animator>().SetBool("StartExplosion", true);
             coll.gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -26,11 +26,22 @@ public class DeathCollision : MonoBehaviour
             Died();
         }
 
-        if(coll.gameObject.tag == "Coins")
+        if (coll.gameObject.tag == "Obstacle")
+            Died();
+
+        if (coll.gameObject.tag == "Coins")
         {
             score += 2;
             textScore.text = "Score: " + score;
             Destroy(coll.gameObject);
+        }
+
+        Debug.Log(coll.name);
+
+        if (coll.gameObject.name == "ColliderActivation")
+        {
+            Debug.Log("Show snakes");
+            coll.gameObject.GetComponentInParent<Animator>().SetBool("StartAppear", true);
         }
     }
 

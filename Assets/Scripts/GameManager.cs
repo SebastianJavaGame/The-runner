@@ -80,10 +80,10 @@ public class GameManager : MonoBehaviour
     void SpawnGroundObstacles()
     {
         if (platforms.Count > 0 && platforms[0] != null)
-            if (platforms.Count < 2)
+            if (platforms.Count < 3)
             {
                 float firstObstacle = platforms[platforms.Count - 1].transform.position.x;
-                int randomSpawnX = UnityEngine.Random.Range(15, 30);
+                int randomSpawnX = UnityEngine.Random.Range(10, 30);
                 int randomNumberObstacle = UnityEngine.Random.Range(0, obstacles.Count);
                 platforms.Add(Instantiate(obstacles[randomNumberObstacle].Prefab, new Vector3(platforms[platforms.Count - 1].transform.position.x + randomSpawnX, obstacles[randomNumberObstacle].PosY, 0), camTransform.rotation));
                 float secondObstacle = platforms[platforms.Count - 1].transform.position.x;
@@ -100,5 +100,6 @@ public class GameManager : MonoBehaviour
     {
         obstacles.Add(new Obstacle(1.2f, prefabsObstacles[0]));
         obstacles.Add(new Obstacle(1.3f, prefabsObstacles[1]));
+        obstacles.Add(new Obstacle(1.45f, prefabsObstacles[2]));
     }
 }
