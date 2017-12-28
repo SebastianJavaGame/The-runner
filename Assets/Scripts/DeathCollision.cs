@@ -6,7 +6,15 @@ using UnityEngine.UI;
 public class DeathCollision : MonoBehaviour
 {
     public Text textScore;
-    private int score = 0;
+    public static int ScoreSlider { get; set; }
+
+    private int Score { get; set; } 
+
+    void Awake()
+    {
+        Score = 0;
+        ScoreSlider = 0;
+    }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
@@ -31,16 +39,14 @@ public class DeathCollision : MonoBehaviour
 
         if (coll.gameObject.tag == "Coins")
         {
-            score += 2;
-            textScore.text = "Score: " + score;
+            Score += 2;
+            ScoreSlider += 2;
+            textScore.text = "" + Score;
             Destroy(coll.gameObject);
         }
 
-        Debug.Log(coll.name);
-
         if (coll.gameObject.name == "ColliderActivation")
         {
-            Debug.Log("Show snakes");
             coll.gameObject.GetComponentInParent<Animator>().SetBool("StartAppear", true);
         }
     }

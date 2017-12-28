@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         coins = new List<GameObject>();
         platforms = new List<GameObject>();
         InitializeObstacle();
-        int firstObstacle = UnityEngine.Random.Range(0, obstacles.Count);
+        int firstObstacle = UnityEngine.Random.Range(0, 1);
         platforms.Add(Instantiate(obstacles[firstObstacle].Prefab, new Vector3(UnityEngine.Random.Range(8, 20), obstacles[firstObstacle].PosY, 0), camTransform.rotation));
     }
 
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
             {
                 float firstObstacle = platforms[platforms.Count - 1].transform.position.x;
                 int randomSpawnX = UnityEngine.Random.Range(10, 30);
-                int randomNumberObstacle = UnityEngine.Random.Range(0, obstacles.Count);
+                int randomNumberObstacle = UnityEngine.Random.Range(0, Level.LevelRace +1);
                 platforms.Add(Instantiate(obstacles[randomNumberObstacle].Prefab, new Vector3(platforms[platforms.Count - 1].transform.position.x + randomSpawnX, obstacles[randomNumberObstacle].PosY, 0), camTransform.rotation));
                 float secondObstacle = platforms[platforms.Count - 1].transform.position.x;
                 float spaceCoins = (secondObstacle - firstObstacle) / 3;
