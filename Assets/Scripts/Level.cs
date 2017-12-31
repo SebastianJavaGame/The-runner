@@ -19,7 +19,7 @@ public class Level : MonoBehaviour
 
     void Start()
     {
-        requreScoreToUpgrade = 30;
+        requreScoreToUpgrade = 20;
         slider.wholeNumbers = true;
         slider.minValue = 0;
         slider.maxValue = requreScoreToUpgrade;
@@ -28,13 +28,13 @@ public class Level : MonoBehaviour
     void Update()
     {
         UpgradeSlider();
-        if (DeathCollision.ScoreSlider >= requreScoreToUpgrade && LevelRace < 3)
+        if (DeathCollision.ScoreSlider >= requreScoreToUpgrade && LevelRace < GameManager.CountObstacles)
             UpgradeLevel();
     }
 
     public void UpgradeLevel()
     {
-        requreScoreToUpgrade = (int)(requreScoreToUpgrade * 2.2f);
+        requreScoreToUpgrade = (int)(requreScoreToUpgrade * 1.8f);
         LevelRace++;
         textLevel.text = "Level " + LevelRace;
         slider.maxValue = requreScoreToUpgrade;

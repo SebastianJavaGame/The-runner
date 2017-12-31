@@ -12,11 +12,12 @@ public class GameManager : MonoBehaviour
     public GameObject coin;
     public GameObject[] prefabsObstacles;
 
-    private static List<GameObject> platforms;
+    public static int CountObstacles { get; set; }
+    public static float LastPlatform { get; set; }
+
     private List<Obstacle> obstacles;
     private List<GameObject> coins;
-
-    public static float LastPlatform { get; set; }
+    private static List<GameObject> platforms;
 
     void Start()
     {
@@ -101,5 +102,9 @@ public class GameManager : MonoBehaviour
         obstacles.Add(new Obstacle(1.2f, prefabsObstacles[0]));
         obstacles.Add(new Obstacle(1.3f, prefabsObstacles[1]));
         obstacles.Add(new Obstacle(1.45f, prefabsObstacles[2]));
+        obstacles.Add(new Obstacle(-0.2f, prefabsObstacles[3]));
+        obstacles.Add(new Obstacle(11.5f, prefabsObstacles[4]));
+
+        CountObstacles = obstacles.Count;
     }
 }

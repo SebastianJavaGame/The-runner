@@ -39,7 +39,7 @@ public class DeathCollision : MonoBehaviour
 
         if (coll.gameObject.tag == "Coins")
         {
-            Score += 2;
+            Score += (1 + Level.LevelRace);
             ScoreSlider += 2;
             textScore.text = "" + Score;
             Destroy(coll.gameObject);

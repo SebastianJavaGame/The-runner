@@ -39,6 +39,6 @@ public class Player : MonoBehaviour
 
     public static void UpgradeSpeed()
     {
-        SpeedFoward += 1.5f;
+        SpeedFoward += 1f;
     }
 }

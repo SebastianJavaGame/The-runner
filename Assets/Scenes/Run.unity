@@ -1109,6 +1109,8 @@ MonoBehaviour:
   - {fileID: 1995898953160408, guid: c05ea77b4b2777242926a42f35b61149, type: 2}
   - {fileID: 1849773871879886, guid: 7e2eee395456535428f463990904f2ac, type: 2}
   - {fileID: 1578967973398888, guid: fbe9d1ae405da6947b4281cc4dcdb833, type: 2}
+  - {fileID: 1292418845540560, guid: eeaa16bee72182a428691aa3d6ee69b3, type: 2}
+  - {fileID: 1321615627895256, guid: d0188d695526c1e4c951aa1e7a7ef8d7, type: 2}
 --- !u!114 &1067352507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1811,8 +1813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55723ee91d736f04b92f74e987d5e61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedFoward: 5
-  hightJump: 11
 --- !u!50 &1601058255
 Rigidbody2D:
   serializedVersion: 4
