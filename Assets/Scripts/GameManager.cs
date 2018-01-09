@@ -13,10 +13,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] prefabsObstacles;
 
     public static int CountObstacles { get; set; }
-    public static float LastPlatform { get; set; }
 
     private List<Obstacle> obstacles;
-    private List<GameObject> coins;
+    private static List<GameObject> coins;
     private static List<GameObject> platforms;
 
     void Start()
