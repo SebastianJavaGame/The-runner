@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 251357637}
   - component: {fileID: 251357636}
   - component: {fileID: 251357635}
+  - component: {fileID: 251357638}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -524,7 +525,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 251357636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 132714208}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Scenes/Menu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 251357638}
+        m_MethodName: SetPauseGame
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &251357636
@@ -560,6 +583,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 251357633}
+--- !u!114 &251357638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 251357633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9949a4b25edcf4ab9a42a808e51333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &277139260
 Prefab:
   m_ObjectHideFlags: 0
@@ -1479,6 +1513,7 @@ GameObject:
   - component: {fileID: 1092642659}
   - component: {fileID: 1092642658}
   - component: {fileID: 1092642657}
+  - component: {fileID: 1092642660}
   m_Layer: 5
   m_Name: ButtonPlay
   m_TagString: Untagged
@@ -1576,6 +1611,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1092642660}
+        m_MethodName: SetPauseGame
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1092642658
@@ -1611,6 +1657,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1092642655}
+--- !u!114 &1092642660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1092642655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9949a4b25edcf4ab9a42a808e51333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1181137071
 Prefab:
   m_ObjectHideFlags: 0
@@ -1738,6 +1795,7 @@ GameObject:
   - component: {fileID: 1234307515}
   - component: {fileID: 1234307514}
   - component: {fileID: 1234307513}
+  - component: {fileID: 1234307516}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -1815,6 +1873,17 @@ MonoBehaviour:
           m_StringArgument: Scenes/Run
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1234307516}
+        m_MethodName: SetPauseGame
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1234307514
@@ -1850,6 +1919,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234307511}
+--- !u!114 &1234307516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234307511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9949a4b25edcf4ab9a42a808e51333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1250030205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,6 +2780,7 @@ GameObject:
   - component: {fileID: 1725205726}
   - component: {fileID: 1725205725}
   - component: {fileID: 1725205724}
+  - component: {fileID: 1725205727}
   m_Layer: 5
   m_Name: ButtonPause
   m_TagString: Untagged
@@ -2797,6 +2878,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1725205727}
+        m_MethodName: SetPauseGame
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1725205725
@@ -2832,6 +2924,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1725205722}
+--- !u!114 &1725205727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1725205722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9949a4b25edcf4ab9a42a808e51333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1733092117
 Prefab:
   m_ObjectHideFlags: 0

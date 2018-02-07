@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(SpeedFoward, GetComponent<Rigidbody2D>().velocity.y);
-        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
     }
 
     void FixedUpdate()
